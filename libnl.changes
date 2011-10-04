@@ -1,0 +1,22 @@
+* Sat Feb 27 2010 Anas Nashif <anas.nashif@intel.com> - 1.1
+- Updated with latest spectacle
+- Include YAML file in source rpm
+
+* Tue Feb 16 2010 Anas Nashif <anas.nashif@intel.com> - 1.1
+- Updated yaml and sanitized spec
+
+* Mon Feb 08 2010 Anas Nashif <anas.nashif@intel.com> - 1.1
+- Fixed spectacle file
+
+* Tue Feb 2 2010 Zhu Yanhai <yanhai.zhu@linux.intel.com> 1.1
+- Switch to build with spectacle
+
+* Mon Dec 14 2009 Yi Yang <yi.y.yang@intel.com> 1.1
+- Remove "unset LD_AS_NEEDED"
+
+* Mon Jun 15 2009 Anas Nashif <anas.nashif@intel.com> - 1.1
+- Update spec file using new spec-builder
+
+* Tue Dec 16 2008 Arjan van de Ven <arjan@linux.intel.com> 1.1
+- Create standardized spec file
+

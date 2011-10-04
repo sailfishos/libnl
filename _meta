@@ -1,0 +1,11 @@
+<package project="Mer:Trunk:Base" name="libnl">
+  <title>Convenience library for kernel netlink sockets</title>
+  <description>This package contains a convenience library to simplify
+using the Linux kernel's netlink sockets interface for
+network manipulation
+
+
+
+</description>
+  <url>http://people.suug.ch/~tgr/libnl/</url>
+</package>

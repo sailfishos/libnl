@@ -1,0 +1,25 @@
+Name: libnl
+Summary: Convenience library for kernel netlink sockets
+Version: 1.1
+Release: 1
+Group: System/Libraries
+License: LGPL
+URL: http://people.suug.ch/~tgr/libnl/
+Sources:
+    - http://people.suug.ch/~tgr/libnl/files/libnl-%{version}.tar.gz
+Patches:
+    - libnl-1.0-pre5-static.patch
+    - libnl-1.0-pre5-debuginfo.patch
+    - libnl-1.0-pre8-use-vasprintf-retval.patch
+    - libnl-1.0-pre8-more-build-output.patch
+    - libnl-1.1-include-limits-h.patch
+Description: |
+    This package contains a convenience library to simplify
+    using the Linux kernel's netlink sockets interface for
+    network manipulation
+
+SubPackages:
+    - Name: devel
+      Summary: Libraries and headers for using libnl
+      Group: Development/Libraries
+      Description: This package contains various headers for using libnl
