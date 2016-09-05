@@ -19,7 +19,6 @@ network manipulation
 
 %package devel
 Summary:    Libraries and headers for using libnl
-Group:      Development/Libraries
 Requires:   %{name} = %{version}-%{release}
 
 %description devel
@@ -27,7 +26,6 @@ This package contains various headers for using libnl
 
 %package cli
 Summary:    Command line interface utils for libnl
-Group:      Development/Libraries
 Requires:   %{name} = %{version}-%{release}
 Requires(post): /sbin/ldconfig
 Requires(postun): /sbin/ldconfig
@@ -49,9 +47,13 @@ rm -rf %{buildroot}
 %make_install
 
 # Makefile junk in the docs. Error by rpmlint.
+<<<<<<< HEAD:rpm/libnl.spec
 #find doc/ -name 'Makefile*' -exec rm '{}' \;
 
 rm -rf %{buildroot}/usr/lib/debug/
+=======
+find doc/ -name 'Makefile*' -exec rm '{}' \;
+>>>>>>> a0ce33af2586d00400c9321d44888a841ce4bf4b:libnl.spec
 
 %post -p /sbin/ldconfig
 
@@ -75,7 +77,6 @@ rm -rf %{buildroot}/usr/lib/debug/
 %files devel
 %defattr(-,root,root,-)
 %doc COPYING
-#%doc doc/*
 %{_includedir}/libnl3/netlink/
 %dir %{_includedir}/libnl3/
 %{_libdir}/*.so
