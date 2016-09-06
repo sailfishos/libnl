@@ -1,6 +1,6 @@
 Name:       libnl
 Summary:    Convenience library for kernel netlink sockets
-Version:    3.2.25
+Version:    3.2.28
 Release:    1
 Group:      System/Libraries
 License:    LGPLv2.1+
@@ -8,9 +8,14 @@ URL:        http://www.infradead.org/~tgr/libnl/
 Source0:    %{name}-%{version}.tar.gz
 Requires(post): /sbin/ldconfig
 Requires(postun): /sbin/ldconfig
-BuildRequires:  flex
-BuildRequires:  byacc
-BuildRequires:  bison
+BuildRequires: flex
+BuildRequires: byacc
+BuildRequires: bison
+# Makesure we build unit tests
+BuildRequires: check
+BuildRequires: autoconf
+BuildRequires: automake
+BuildRequires: libtool
 
 %description
 This package contains a convenience library to simplify
@@ -39,21 +44,12 @@ libraries on which they depend.
 
 %build
 ./autogen.sh
-%configure --disable-static
+%configure --disable-static --enable-cli=yes
 make %{?jobs:-j%jobs}
 
 %install
 rm -rf %{buildroot}
 %make_install
-
-# Makefile junk in the docs. Error by rpmlint.
-<<<<<<< HEAD:rpm/libnl.spec
-#find doc/ -name 'Makefile*' -exec rm '{}' \;
-
-rm -rf %{buildroot}/usr/lib/debug/
-=======
-find doc/ -name 'Makefile*' -exec rm '{}' \;
->>>>>>> a0ce33af2586d00400c9321d44888a841ce4bf4b:libnl.spec
 
 %post -p /sbin/ldconfig
 
@@ -62,6 +58,9 @@ find doc/ -name 'Makefile*' -exec rm '{}' \;
 %post cli -p /sbin/ldconfig
 
 %postun cli -p /sbin/ldconfig
+
+%check
+make check
 
 %files
 %defattr(-,root,root,-)
