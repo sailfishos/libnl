@@ -1,16 +1,21 @@
 Name:       libnl
 Summary:    Convenience library for kernel netlink sockets
-Version:    3.2.9
+Version:    3.2.28
 Release:    1
 Group:      System/Libraries
-License:    LGPLv2.1
+License:    LGPLv2.1+
 URL:        http://www.infradead.org/~tgr/libnl/
-Source0:    http://www.infradead.org/~tgr/libnl/files/libnl-%{version}.tar.gz
+Source0:    %{name}-%{version}.tar.gz
 Requires(post): /sbin/ldconfig
 Requires(postun): /sbin/ldconfig
-BuildRequires:  flex
-BuildRequires:  byacc
-BuildRequires:  bison
+BuildRequires: flex
+BuildRequires: byacc
+BuildRequires: bison
+# Makesure we build unit tests
+BuildRequires: check
+BuildRequires: autoconf
+BuildRequires: automake
+BuildRequires: libtool
 
 %description
 This package contains a convenience library to simplify
@@ -35,19 +40,16 @@ This package contains various libnl3 utils and additional
 libraries on which they depend.
 
 %prep
-%setup -q -n %{name}-%{version}
+%setup -q -n %{name}-%{version}/%{name}
 
 %build
-
-%configure --disable-static
+./autogen.sh
+%configure --disable-static --enable-cli=yes
 make %{?jobs:-j%jobs}
 
 %install
 rm -rf %{buildroot}
 %make_install
-
-# Makefile junk in the docs. Error by rpmlint.
-find doc/ -name 'Makefile*' -exec rm '{}' \;
 
 %post -p /sbin/ldconfig
 
@@ -57,6 +59,9 @@ find doc/ -name 'Makefile*' -exec rm '{}' \;
 
 %postun cli -p /sbin/ldconfig
 
+%check
+make check
+
 %files
 %defattr(-,root,root,-)
 %doc COPYING
@@ -64,11 +69,13 @@ find doc/ -name 'Makefile*' -exec rm '{}' \;
 %{_libdir}/libnl-genl-3.so.*
 %{_libdir}/libnl-nf-3.so.*
 %{_libdir}/libnl-route-3.so.*
+%{_libdir}/libnl-idiag-3.so.*
+%{_libdir}/libnl-xfrm-3.so.*
 %config(noreplace) %{_sysconfdir}/*
 
 %files devel
 %defattr(-,root,root,-)
-%doc doc/*
+%doc COPYING
 %{_includedir}/libnl3/netlink/
 %dir %{_includedir}/libnl3/
 %{_libdir}/*.so
@@ -79,5 +86,9 @@ find doc/ -name 'Makefile*' -exec rm '{}' \;
 %doc COPYING
 %{_libdir}/libnl-cli*.so.*
 %{_libdir}/libnl/
-%{_sbindir}/*
+%{_bindir}/genl-ctrl-list
+%{_bindir}/idiag-socket-details
+%{_bindir}/nl-*
+%{_bindir}/nf-*
 %{_mandir}/man8/*
+
