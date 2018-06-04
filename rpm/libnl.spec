@@ -1,6 +1,6 @@
 Name:       libnl
 Summary:    Convenience library for kernel netlink sockets
-Version:    3.2.28
+Version:    3.4.0
 Release:    1
 Group:      System/Libraries
 License:    LGPLv2.1+
@@ -11,7 +11,7 @@ Requires(postun): /sbin/ldconfig
 BuildRequires: flex
 BuildRequires: byacc
 BuildRequires: bison
-# Makesure we build unit tests
+# Make sure we build unit tests
 BuildRequires: check
 BuildRequires: autoconf
 BuildRequires: automake
