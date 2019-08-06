@@ -3,7 +3,7 @@ Summary:    Convenience library for kernel netlink sockets
 Version:    3.4.0
 Release:    1
 Group:      System/Libraries
-License:    LGPLv2.1+
+License:    LGPLv2+
 URL:        http://www.infradead.org/~tgr/libnl/
 Source0:    %{name}-%{version}.tar.gz
 Requires(post): /sbin/ldconfig
