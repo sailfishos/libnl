@@ -71,7 +71,7 @@ make check
 %{_libdir}/libnl-route-3.so.*
 %{_libdir}/libnl-idiag-3.so.*
 %{_libdir}/libnl-xfrm-3.so.*
-%config(noreplace) %{_sysconfdir}/*
+%config %{_sysconfdir}/*
 
 %files devel
 %defattr(-,root,root,-)
