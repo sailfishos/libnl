@@ -1,8 +1,7 @@
 Name:       libnl
 Summary:    Convenience library for kernel netlink sockets
-Version:    3.4.0
+Version:    3.5.0
 Release:    1
-Group:      System/Libraries
 License:    LGPLv2+
 URL:        http://www.infradead.org/~tgr/libnl/
 Source0:    %{name}-%{version}.tar.gz
@@ -45,7 +44,7 @@ libraries on which they depend.
 %build
 ./autogen.sh
 %configure --disable-static --enable-cli=yes
-make %{?jobs:-j%jobs}
+%make_build
 
 %install
 rm -rf %{buildroot}
@@ -64,7 +63,7 @@ make check
 
 %files
 %defattr(-,root,root,-)
-%doc COPYING
+%license COPYING
 %{_libdir}/libnl-3.so.*
 %{_libdir}/libnl-genl-3.so.*
 %{_libdir}/libnl-nf-3.so.*
@@ -75,7 +74,6 @@ make check
 
 %files devel
 %defattr(-,root,root,-)
-%doc COPYING
 %{_includedir}/libnl3/netlink/
 %dir %{_includedir}/libnl3/
 %{_libdir}/*.so
@@ -83,7 +81,6 @@ make check
 
 %files cli
 %defattr(-,root,root,-)
-%doc COPYING
 %{_libdir}/libnl-cli*.so.*
 %{_libdir}/libnl/
 %{_bindir}/genl-ctrl-list
