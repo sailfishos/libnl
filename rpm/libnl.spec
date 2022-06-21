@@ -4,7 +4,7 @@ Version:    3.4.0
 Release:    1
 Group:      System/Libraries
 License:    LGPLv2+
-URL:        http://www.infradead.org/~tgr/libnl/
+URL:        https://github.com/sailfishos/libnl
 Source0:    %{name}-%{version}.tar.gz
 Requires(post): /sbin/ldconfig
 Requires(postun): /sbin/ldconfig
