@@ -3,7 +3,7 @@ Summary:    Convenience library for kernel netlink sockets
 Version:    3.5.0
 Release:    1
 License:    LGPLv2+
-URL:        http://www.infradead.org/~tgr/libnl/
+URL:        https://github.com/sailfishos/libnl
 Source0:    %{name}-%{version}.tar.gz
 Requires(post): /sbin/ldconfig
 Requires(postun): /sbin/ldconfig
