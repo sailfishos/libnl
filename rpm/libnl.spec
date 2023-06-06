@@ -1,6 +1,6 @@
 Name:       libnl
 Summary:    Convenience library for kernel netlink sockets
-Version:    3.5.0
+Version:    3.7.0
 Release:    1
 License:    LGPLv2+
 URL:        https://github.com/sailfishos/libnl
